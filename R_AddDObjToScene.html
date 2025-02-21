@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IDA - 1-game_test.exe.i64 (1-game_test.exe) D:\435345234543\source\cheat\cod\dump\mw2019pdb\1-game_test.exe.i64</title>
+</head>
+<body class="c41">
+<span style="white-space: pre; font-family: Consolas,monospace;" class="c1 c41">
+<span class="c23">void __fastcall R_AddDObjToScene</span><span class="c9">(
+        </span><span class="c23">const DObj *obj,
+        const cpose_t *pose,
+        unsigned int entnum,
+        unsigned int renderFlags,
+        const GfxSceneEntityMutableShaderData *entityMutableShaderData,
+        const vec3_t *lightingOrigin,
+        float materialTime</span><span class="c9">)
+{
+  </span><span class="c33">float v8</span><span class="c9">; </span><span class="c24">// [rsp+30h] [rbp-28h]
+  </span><span class="c33">float v9</span><span class="c9">; </span><span class="c24">// [rsp+90h] [rbp+38h]
+
+  </span><span class="c32">__asm </span><span class="c9">{ </span><span class="c8">vmovss  xmm0, [rsp+58h+arg_30] </span><span class="c9"></span><span class="c9">}
+  </span><span class="c32">if </span><span class="c9">( </span><span class="c8">g_delayedSceneModelGlob</span><span class="c9">.delayingActive )
+  {
+    </span><span class="c32">__asm </span><span class="c9">{ </span><span class="c8">vmovss  [rsp+58h+var_28], xmm0 </span><span class="c9"></span><span class="c9">}
+    </span><span class="c8">R_AddDObjToSceneDelayed</span><span class="c9">(</span><span class="c24">obj</span><span class="c9">, </span><span class="c24">pose</span><span class="c9">, </span><span class="c24">entnum</span><span class="c9">, </span><span class="c24">renderFlags</span><span class="c9">, </span><span class="c24">entityMutableShaderData</span><span class="c9">, </span><span class="c24">lightingOrigin</span><span class="c9">, </span><span class="c24">v8</span><span class="c9">, </span><span class="c32">0</span><span class="c9">, </span><span class="c32">0</span><span class="c9">);
+  </span><span class="c9"></span><span class="c9">}
+  </span><span class="c32">else
+  </span><span class="c9">{
+    </span><span class="c32">__asm </span><span class="c9">{ </span><span class="c8">vmovss  [rsp+58h+arg_30], xmm0 </span><span class="c9"></span><span class="c9">}
+    </span><span class="c8">R_AddDObjToSceneInternal</span><span class="c9">(</span><span class="c24">obj</span><span class="c9">, </span><span class="c24">pose</span><span class="c9">, </span><span class="c24">entnum</span><span class="c9">, </span><span class="c24">renderFlags</span><span class="c9">, </span><span class="c24">entityMutableShaderData</span><span class="c9">, </span><span class="c24">lightingOrigin</span><span class="c9">, </span><span class="c24">v9</span><span class="c9">);
+  </span><span class="c9"></span><span class="c9">}
+</span><span class="c1"></span><span class="c9">}
+</span>
+</span><style type="text/css">
+/* line-fg-default */
+.c1 { color: #AAAAAA; }
+/* line-bg-default */
+.c41 { background-color: #2D2D2D; }
+/* line-fg-hidden */
+.c23 { color: #FFD200; }
+/* line-fg-punctuation */
+.c9 { color: silver; }
+/* line-fg-register-name */
+.c33 { color: #73ADAD; }
+/* line-fg-libfunc */
+.c24 { color: aqua; }
+/* line-fg-keyword */
+.c32 { color: #ABABAB; }
+/* line-fg-demangled-name */
+.c8 { color: #FFECBB; }
+</style></body></html>

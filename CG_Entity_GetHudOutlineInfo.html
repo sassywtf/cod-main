@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IDA - 1-game_test.exe.i64 (1-game_test.exe) D:\435345234543\source\cheat\cod\dump\mw2019pdb\1-game_test.exe.i64</title>
+</head>
+<body class="c41">
+<span style="white-space: pre; font-family: Consolas,monospace;" class="c1 c41">
+<span class="c23">GfxSceneHudOutlineInfo *__fastcall CG_Entity_GetHudOutlineInfo</span><span class="c9">(
+        </span><span class="c23">GfxSceneHudOutlineInfo *result,
+        const cg_t *cgameGlob,
+        centity_t *cent</span><span class="c9">)
+{
+  </span><span class="c33">HudData v6</span><span class="c9">; </span><span class="c24">// ebx
+  </span><span class="c33">int pm_type</span><span class="c9">; </span><span class="c24">// ebp
+  </span><span class="c33">bool v10</span><span class="c9">; </span><span class="c24">// r13
+  </span><span class="c33">unsigned int v11</span><span class="c9">; </span><span class="c24">// ebx
+  </span><span class="c33">int v12</span><span class="c9">; </span><span class="c24">// r15d
+  </span><span class="c33">const HudOutlineDef *HudOutlineDefFromPlayerState</span><span class="c9">; </span><span class="c24">// rbp
+  </span><span class="c33">CgHandler *Handler</span><span class="c9">; </span><span class="c24">// rax
+  </span><span class="c33">bool drawInStencil</span><span class="c9">; </span><span class="c24">// al
+  </span><span class="c33">int hudOutlineStartTime</span><span class="c9">; </span><span class="c24">// edx
+  </span><span class="c33">unsigned int Color</span><span class="c9">; </span><span class="c24">// eax
+  </span><span class="c33">int outlineWidth</span><span class="c9">; </span><span class="c24">// ecx
+  </span><span class="c33">vec3_t playerViewOrigin</span><span class="c9">; </span><span class="c24">// [rsp+30h] [rbp-68h] BYREF
+  </span><span class="c33">vec3_t outlinedEntOrigin</span><span class="c9">; </span><span class="c24">// [rsp+40h] [rbp-58h] BYREF
+
+  </span><span class="c32">__asm </span><span class="c9">{ </span><span class="c8">vmovups ymm0, ymmword ptr cs:NULL_HUDOUTLINE_INFO_2.color </span><span class="c9"></span><span class="c9">}
+  </span><span class="c24">_R14 </span><span class="c9">= </span><span class="c24">result</span><span class="c9">;
+  </span><span class="c24">v6</span><span class="c9">.</span><span class="c24">0 </span><span class="c9">= (</span><span class="c23">$D69577AC11C1636F320D0973E2FBC7CA</span><span class="c9">)</span><span class="c24">cent</span><span class="c9">-&gt;nextState.hudData;
+  </span><span class="c24">pm_type </span><span class="c9">= </span><span class="c24">cgameGlob</span><span class="c9">-&gt;predictedPlayerState.pm_type;
+  </span><span class="c24">_RDI </span><span class="c9">= </span><span class="c24">cgameGlob</span><span class="c9">;
+  </span><span class="c32">__asm </span><span class="c9">{ </span><span class="c8">vmovups ymmword ptr [rcx], ymm0 </span><span class="c9"></span><span class="c9">}
+  </span><span class="c24">result</span><span class="c9">-&gt;characterEVOffset = </span><span class="c8">NULL_HUDOUTLINE_INFO_2</span><span class="c9">.characterEVOffset;
+  </span><span class="c24">v10 </span><span class="c9">= </span><span class="c8">CG_Utils_StencilScriptControlled</span><span class="c9">((</span><span class="c23">const LocalClientNum_t</span><span class="c9">)</span><span class="c24">cgameGlob</span><span class="c9">-&gt;localClientNum);
+  </span><span class="c24">v11 </span><span class="c9">= *(</span><span class="c23">_BYTE *</span><span class="c9">)&amp;</span><span class="c24">v6</span><span class="c9">.</span><span class="c24">0 &amp; </span><span class="c32">0x3F</span><span class="c9">;
+  </span><span class="c32">if </span><span class="c9">( </span><span class="c24">v11 </span><span class="c9">)
+  {
+    </span><span class="c32">if </span><span class="c9">( !</span><span class="c24">_RDI</span><span class="c9">-&gt;scopeForceEnemyOutlines &amp;&amp; </span><span class="c24">pm_type </span><span class="c9">!= </span><span class="c32">5 </span><span class="c9">)
+    {
+      </span><span class="c24">v12 </span><span class="c9">= </span><span class="c24">_RDI</span><span class="c9">-&gt;time - </span><span class="c24">_RDI</span><span class="c9">-&gt;predictedPlayerState.deltaTime;
+      </span><span class="c32">if </span><span class="c9">( </span><span class="c24">cent</span><span class="c9">-&gt;currentHudOutlineIndex != </span><span class="c24">v11 </span><span class="c9">)
+      {
+        </span><span class="c24">cent</span><span class="c9">-&gt;hudOutlineStartTime = </span><span class="c24">v12</span><span class="c9">;
+        </span><span class="c24">cent</span><span class="c9">-&gt;currentHudOutlineIndex = </span><span class="c24">v11</span><span class="c9">;
+      </span><span class="c24"></span><span class="c9">}
+      </span><span class="c24">HudOutlineDefFromPlayerState </span><span class="c9">= </span><span class="c8">BG_GetHudOutlineDefFromPlayerState</span><span class="c9">(&amp;</span><span class="c24">_RDI</span><span class="c9">-&gt;predictedPlayerState, </span><span class="c24">v11</span><span class="c9">);
+      </span><span class="c32">if </span><span class="c9">( </span><span class="c24">HudOutlineDefFromPlayerState </span><span class="c9">)
+      {
+        </span><span class="c24">Handler </span><span class="c9">= </span><span class="c8">CgHandler::getHandler</span><span class="c9">(</span><span class="c24">_RDI</span><span class="c9">-&gt;localClientNum);
+        </span><span class="c32">if </span><span class="c9">( </span><span class="c8">BG_HudOutline_ShouldDrawOnEnt</span><span class="c9">(
+               </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">,
+               </span><span class="c24">Handler</span><span class="c9">,
+               &amp;</span><span class="c24">_RDI</span><span class="c9">-&gt;predictedPlayerState,
+               &amp;</span><span class="c24">cent</span><span class="c9">-&gt;nextState) )
+        {
+          </span><span class="c24">drawInStencil </span><span class="c9">= </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">-&gt;drawInStencil;
+          </span><span class="c32">if </span><span class="c9">( </span><span class="c24">v10 </span><span class="c9">)
+          {
+            </span><span class="c32">if </span><span class="c9">( </span><span class="c24">drawInStencil &amp;&amp; </span><span class="c8">CG_Utils_ShouldHighlightInScope</span><span class="c9">((</span><span class="c23">const LocalClientNum_t</span><span class="c9">)</span><span class="c24">_RDI</span><span class="c9">-&gt;localClientNum) )
+            {
+              </span><span class="c32">__asm
+              </span><span class="c9">{
+                </span><span class="c8">vxorps  xmm0, xmm0, xmm0
+                vcvtsi2ss xmm0, xmm0, eax
+                vmovss  dword ptr [r14+4], xmm0
+              </span><span class="c8"></span><span class="c9">}
+            </span><span class="c1"></span><span class="c9">}
+          </span><span class="c1"></span><span class="c9">}
+          </span><span class="c32">else if </span><span class="c9">( !</span><span class="c24">drawInStencil </span><span class="c9">)
+          {
+            </span><span class="c8">CG_GetPoseOrigin</span><span class="c9">(&amp;</span><span class="c24">cent</span><span class="c9">-&gt;pose, &amp;</span><span class="c24">outlinedEntOrigin</span><span class="c9">);
+            </span><span class="c32">__asm
+            </span><span class="c9">{
+              </span><span class="c8">vmovss  xmm0, dword ptr [rdi+38h]
+              vmovss  xmm1, dword ptr [rdi+3Ch]
+            </span><span class="c8"></span><span class="c9">}
+            </span><span class="c24">hudOutlineStartTime </span><span class="c9">= </span><span class="c24">cent</span><span class="c9">-&gt;hudOutlineStartTime;
+            </span><span class="c32">__asm
+            </span><span class="c9">{
+              </span><span class="c8">vmovss  dword ptr [rsp+98h+playerViewOrigin], xmm0
+              vmovss  xmm0, dword ptr [rdi+40h]
+              vaddss  xmm2, xmm0, dword ptr [rdi+1F0h]
+              vmovss  dword ptr [rsp+98h+playerViewOrigin+8], xmm2
+              vmovss  dword ptr [rsp+98h+playerViewOrigin+4], xmm1
+            </span><span class="c8"></span><span class="c9">}
+            </span><span class="c24">Color </span><span class="c9">= </span><span class="c8">BG_HudOutline_GetColor</span><span class="c9">(
+                      </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">,
+                      </span><span class="c24">hudOutlineStartTime</span><span class="c9">,
+                      </span><span class="c24">v12</span><span class="c9">,
+                      &amp;</span><span class="c24">playerViewOrigin</span><span class="c9">,
+                      &amp;</span><span class="c24">outlinedEntOrigin</span><span class="c9">);
+            </span><span class="c24">outlineWidth </span><span class="c9">= </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">-&gt;outlineWidth;
+            </span><span class="c24">_R14</span><span class="c9">-&gt;color = </span><span class="c24">Color</span><span class="c9">;
+            </span><span class="c24">_R14</span><span class="c9">-&gt;drawOccludedPixels = </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">-&gt;drawOccludedPixels;
+            </span><span class="c24">_R14</span><span class="c9">-&gt;drawNonOccludedPixels = </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">-&gt;drawNonOccludedPixels;
+            </span><span class="c24">_R14</span><span class="c9">-&gt;lineWidth = </span><span class="c8">truncate_cast&lt;unsigned char,int&gt;</span><span class="c9">(</span><span class="c24">outlineWidth</span><span class="c9">);
+            </span><span class="c24">_R14</span><span class="c9">-&gt;renderMode = </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">-&gt;outlineType;
+            </span><span class="c24">_R14</span><span class="c9">-&gt;fill = </span><span class="c24">HudOutlineDefFromPlayerState</span><span class="c9">-&gt;drawFill;
+          </span><span class="c9"></span><span class="c9">}
+        </span><span class="c1"></span><span class="c9">}
+      </span><span class="c1"></span><span class="c9">}
+    </span><span class="c1"></span><span class="c9">}
+  </span><span class="c1"></span><span class="c9">}
+  </span><span class="c32">else
+  </span><span class="c9">{
+    </span><span class="c24">cent</span><span class="c9">-&gt;currentHudOutlineIndex = </span><span class="c32">0</span><span class="c9">;
+  </span><span class="c32"></span><span class="c9">}
+  </span><span class="c32">return </span><span class="c24">_R14</span><span class="c9">;
+</span><span class="c24"></span><span class="c9">}
+</span>
+</span><style type="text/css">
+/* line-fg-default */
+.c1 { color: #AAAAAA; }
+/* line-bg-default */
+.c41 { background-color: #2D2D2D; }
+/* line-fg-hidden */
+.c23 { color: #FFD200; }
+/* line-fg-punctuation */
+.c9 { color: silver; }
+/* line-fg-register-name */
+.c33 { color: #73ADAD; }
+/* line-fg-libfunc */
+.c24 { color: aqua; }
+/* line-fg-keyword */
+.c32 { color: #ABABAB; }
+/* line-fg-demangled-name */
+.c8 { color: #FFECBB; }
+</style></body></html>
